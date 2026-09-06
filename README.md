@@ -1,6 +1,6 @@
 # OpenCV Face-Tracking Sentry Turret
 
-![Turret Action Demo](sentry-gif.gif) 
+![Turret Action Demo](sentry-clip.gif) 
 
 
 ## Overview
