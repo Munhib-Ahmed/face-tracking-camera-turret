@@ -25,7 +25,7 @@ The tracking utilizes a proportional control loop (Kp = 0.035). The Python scrip
 
 1. **Wire the Hardware:** 
    * Connect the servo signal pin to the Arduino Mega. Provide external 5V power to the servo to avoid burning out the Mega's voltage regulator.
-   * (wiring.png)
+![Wiring Schematic](wiring.png) 
 
 2. **Flash the Arduino:**
    * Upload a standard servo control sketch to the Arduino Mega that listens to the Serial monitor at `9600` baud, reads the incoming integer (prefixed by 'P'), and writes it to the servo. 
