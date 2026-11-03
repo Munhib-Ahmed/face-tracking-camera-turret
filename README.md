@@ -10,7 +10,7 @@ A single-axis face-tracking sentry turret driven by proportional control. The sy
 *   **Microcontroller:** Arduino Mega 2560
 *   **Vision:** Standard USB Webcam
 *   **Actuation:** Standard 5V Servo Motor
-*   **Chassis:** Custom 3D-printed mounting brackets and hardware
+*   **Mounting:** Webcam fixed to the servo horn (3D-printed bracket in progress)
 
 ## Software Dependencies
 *   Python 3.x
