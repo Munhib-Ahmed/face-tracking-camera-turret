@@ -19,7 +19,7 @@ face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fronta
 # 3. Start the USB Webcam
 cap = cv2.VideoCapture(1)
 current_pan = 90
-KP = 0.035 # Increased for sharper tracking (Goldilocks zone)
+KP = 0.035 # 0.05 oscillated, 0.02 was sluggish
 
 while True:
     ret, frame = cap.read()
