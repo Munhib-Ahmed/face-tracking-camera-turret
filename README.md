@@ -33,7 +33,7 @@ The tracking utilizes a proportional control loop (Kp = 0.035). The Python scrip
 
 3. **Install Python Libraries:**
    ```bash
-   pip install opencv-python pyserial numpy
+   pip install "opencv-python<5" pyserial numpy
    ```
 
 4. **Run the Tracker:**
