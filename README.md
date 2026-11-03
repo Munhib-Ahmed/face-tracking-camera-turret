@@ -28,8 +28,23 @@ The tracking utilizes a proportional control loop (Kp = 0.035). The Python scrip
 ![Wiring Schematic](wiring.png) 
 
 2. **Flash the Arduino:**
-   * Upload a standard servo control sketch to the Arduino Mega that listens to the Serial monitor at `9600` baud, reads the incoming integer (prefixed by 'P'), and writes it to the servo. 
+   * Upload [`turret_listener/turret_listener.ino`](turret_listener/turret_listener.ino) to the Arduino Mega. It listens at `9600` baud for angles prefixed by `P` (for example `P90`) and writes them to the servo on pin 6.
+   * Close the Arduino IDE Serial Monitor afterwards, or Python can't open the port.
 
 3. **Install Python Libraries:**
    ```bash
    pip install opencv-python pyserial numpy
+   ```
+
+4. **Run the Tracker:**
+   * Set the serial port (`COM3`) and camera index (`cv2.VideoCapture(1)`) in `sentry_turret.py` to match your setup.
+   ```bash
+   python sentry_turret.py
+   ```
+   * Press `q` to quit.
+
+## Tuning Notes
+
+* Kp = 0.05 overshot and oscillated; Kp = 0.02 was stable but sluggish. 0.035 with a 15-pixel deadzone tracks smoothly.
+* If the turret turns away from you, flip the sign on the angle update (`+=` vs `-=`). It depends on how the servo is mounted.
+* OpenCV 5 moved the Haar cascade API; install OpenCV 4 with `pip install "opencv-python<5"`.
