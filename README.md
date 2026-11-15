@@ -1,10 +1,10 @@
-# OpenCV Face-Tracking Sentry Turret
+# Face-Tracking Camera Turret
 
-![Turret Action Demo](sentry-clip.gif) 
+![Turret Action Demo](turret-demo.gif) 
 
 
 ## Overview
-A single-axis face-tracking sentry turret driven by proportional control. The system uses a USB webcam and OpenCV's Haar Cascades to detect a face, calculates the pixel offset from the center of the frame, and sends serial commands to an Arduino Mega to actuate a pan servo. 
+A single-axis face-tracking camera turret driven by proportional control. The system uses a USB webcam and OpenCV's Haar Cascades to detect a face, calculates the pixel offset from the center of the frame, and sends serial commands to an Arduino Mega to actuate a pan servo. 
 
 ## Hardware Stack
 *   **Microcontroller:** Arduino Mega 2560
@@ -45,9 +45,9 @@ The tracking utilizes a proportional control loop (Kp = 0.035). The Python scrip
    ```
 
 4. **Run the Tracker:**
-   * Set the serial port (`COM3`) and camera index (`cv2.VideoCapture(1)`) in `sentry_turret.py` to match your setup.
+   * Set the serial port (`COM3`) and camera index (`cv2.VideoCapture(1)`) in `face_tracking_turret.py` to match your setup.
    ```bash
-   python sentry_turret.py
+   python face_tracking_turret.py
    ```
    * Press `q` to quit.
 

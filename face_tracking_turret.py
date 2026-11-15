@@ -54,7 +54,7 @@ while True:
             arduino.write(f"P{int(current_pan)}\n".encode())
 
     # Show the video feed
-    cv2.imshow('1-Axis Sentry Turret', frame)
+    cv2.imshow('Face-Tracking Camera Turret', frame)
 
     # Press 'q' to quit
     if cv2.waitKey(1) & 0xFF == ord('q'):
