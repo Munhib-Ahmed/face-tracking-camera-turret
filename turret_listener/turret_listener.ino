@@ -1,5 +1,5 @@
 // Serial listener for the face-tracking turret.
-// Receives pan angles from sentry_turret.py as "P<angle>\n" at 9600 baud
+// Receives pan angles from face_tracking_turret.py as "P<angle>\n" at 9600 baud
 // and drives the pan servo on pin 6.
 #include <Servo.h>
 
