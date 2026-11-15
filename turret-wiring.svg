@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace">
+  <title>Face-tracking camera turret: system block diagram and Arduino Mega to servo wiring</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/>
+    </marker>
+    <marker id="arrowGrey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="700" fill="#ffffff"/>
+
+  <!-- ============ PART 1: SYSTEM ============ -->
+  <text x="20" y="52" font-size="26" font-weight="700" fill="#1565c0">1  SYSTEM</text>
+
+  <g fill="#ffffff" stroke="#333" stroke-width="3">
+    <rect x="20"  y="90" width="200" height="120" rx="6"/>
+    <rect x="340" y="90" width="200" height="120" rx="6"/>
+    <rect x="660" y="90" width="200" height="120" rx="6"/>
+    <rect x="980" y="90" width="200" height="120" rx="6"/>
+  </g>
+
+  <g font-size="24" fill="#222" text-anchor="middle">
+    <text x="120" y="142" font-weight="700">Webcam</text>
+    <text x="120" y="174" font-size="20" fill="#555">USB</text>
+
+    <text x="440" y="130" font-weight="700">Laptop</text>
+    <text x="440" y="162" font-size="20" fill="#555">Python</text>
+    <text x="440" y="190" font-size="20" fill="#555">OpenCV Haar</text>
+
+    <text x="760" y="142" font-weight="700">Arduino</text>
+    <text x="760" y="174" font-size="20" fill="#555">Mega 2560</text>
+
+    <text x="1080" y="142" font-weight="700">Servo</text>
+    <text x="1080" y="174" font-size="20" fill="#555">pan axis</text>
+  </g>
+
+  <!-- signal arrows -->
+  <g stroke="#1565c0" stroke-width="3" marker-end="url(#arrow)">
+    <line x1="222" y1="150" x2="336" y2="150"/>
+    <line x1="542" y1="150" x2="656" y2="150"/>
+    <line x1="862" y1="150" x2="976" y2="150"/>
+  </g>
+  <g font-size="18" fill="#222" text-anchor="middle">
+    <text x="280" y="136">USB</text>
+    <text x="280" y="178" fill="#555">video</text>
+
+    <text x="600" y="136">USB serial</text>
+    <text x="600" y="178" fill="#555">9600 baud</text>
+
+    <text x="920" y="136">PWM</text>
+    <text x="920" y="178" fill="#555">pin 6</text>
+  </g>
+
+  <!-- mechanical link: camera rides on servo horn -->
+  <path d="M1080,212 V246 H120 V212" fill="none" stroke="#333" stroke-width="2.5" stroke-dasharray="9 7"/>
+  <text x="600" y="276" font-size="18" fill="#555" text-anchor="middle">webcam mounted on servo horn (closes the loop)</text>
+
+  <line x1="20" y1="306" x2="1180" y2="306" stroke="#ddd" stroke-width="2"/>
+
+  <!-- ============ PART 2: WIRING ============ -->
+  <text x="20" y="350" font-size="26" font-weight="700" fill="#1565c0">2  WIRING</text>
+
+  <!-- USB from laptop: data + power -->
+  <line x1="172" y1="525" x2="226" y2="525" stroke="#333" stroke-width="3" marker-end="url(#arrowGrey)"/>
+  <text x="95" y="493" font-size="18" fill="#222" text-anchor="middle">USB from</text>
+  <text x="95" y="517" font-size="18" fill="#222" text-anchor="middle">laptop</text>
+  <text x="95" y="553" font-size="18" fill="#555" text-anchor="middle">serial data</text>
+  <text x="95" y="577" font-size="18" fill="#555" text-anchor="middle">+ 5V power</text>
+
+  <!-- Mega -->
+  <rect x="230" y="380" width="310" height="290" rx="6" fill="#fff" stroke="#333" stroke-width="3"/>
+  <text x="252" y="418" font-size="24" font-weight="700" fill="#222">Arduino</text>
+  <text x="252" y="448" font-size="24" font-weight="700" fill="#222">Mega 2560</text>
+
+  <g font-size="26" font-weight="700" fill="#222" text-anchor="end">
+    <text x="508" y="499">GND</text>
+    <text x="508" y="569">5V</text>
+    <text x="508" y="639">6</text>
+  </g>
+  <g fill="#333">
+    <rect x="522" y="480" width="18" height="20"/>
+    <rect x="522" y="550" width="18" height="20"/>
+    <rect x="522" y="620" width="18" height="20"/>
+  </g>
+
+  <!-- Servo -->
+  <rect x="880" y="440" width="270" height="230" rx="6" fill="#fff" stroke="#333" stroke-width="3"/>
+  <text x="1015" y="540" font-size="26" font-weight="700" fill="#222" text-anchor="middle">Servo</text>
+  <text x="1015" y="574" font-size="20" fill="#555" text-anchor="middle">pan axis</text>
+  <g fill="#333">
+    <rect x="880" y="480" width="18" height="20"/>
+    <rect x="880" y="550" width="18" height="20"/>
+    <rect x="880" y="620" width="18" height="20"/>
+  </g>
+
+  <!-- wires (true colours) -->
+  <g stroke-width="7" stroke-linecap="round">
+    <line x1="540" y1="490" x2="880" y2="490" stroke="#6d4325"/>
+    <line x1="540" y1="560" x2="880" y2="560" stroke="#d32f2f"/>
+    <line x1="540" y1="630" x2="880" y2="630" stroke="#f08c00"/>
+  </g>
+  <g font-size="20" fill="#222" text-anchor="middle">
+    <text x="710" y="476">brown/black · GND</text>
+    <text x="710" y="546">red · 5V</text>
+    <text x="710" y="616">orange/yellow · signal</text>
+  </g>
+</svg>
