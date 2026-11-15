@@ -11,6 +11,7 @@ A single-axis face-tracking sentry turret driven by proportional control. The sy
 *   **Vision:** Standard USB Webcam
 *   **Actuation:** Standard 5V Servo Motor
 *   **Mounting:** Webcam fixed to the servo horn (3D-printed bracket in progress)
+*   **Power:** Mega powered over USB from the laptop; servo runs off the Mega's 5V pin
 
 ## Software Dependencies
 *   Python 3.x
@@ -24,8 +25,15 @@ The tracking utilizes a proportional control loop (Kp = 0.035). The Python scrip
 ## Installation & Setup
 
 1. **Wire the Hardware:** 
-   * Connect the servo signal pin to the Arduino Mega. Provide external 5V power to the servo to avoid burning out the Mega's voltage regulator.
-![Wiring Schematic](wiring.png) 
+   * Servo brown/black wire → Mega `GND`
+   * Servo red wire → Mega `5V`
+   * Servo orange/yellow (signal) wire → Mega pin `6`
+   * Plug the Mega into the laptop over USB. The one cable carries the serial link and powers both the Mega and the servo.
+   * USB power is fine for a small servo turning only a webcam. The Mega's USB line has a 500 mA resettable fuse, so a heavier servo can make the board reset; for that, power the servo from a separate 5V supply and connect its ground to the Mega's `GND`.
+
+![Wiring diagram](turret-wiring.svg)
+
+![Photo of the wired prototype](wiring.png)
 
 2. **Flash the Arduino:**
    * Upload [`turret_listener/turret_listener.ino`](turret_listener/turret_listener.ino) to the Arduino Mega. It listens at `9600` baud for angles prefixed by `P` (for example `P90`) and writes them to the servo on pin 6.
