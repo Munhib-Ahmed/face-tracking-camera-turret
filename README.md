@@ -1,5 +1,7 @@
 # Face-Tracking Camera Turret
 
+**Project page:** https://www.munhibahmed.com/projects/face-tracking-turret · **Portfolio:** https://www.munhibahmed.com
+
 ![Turret Action Demo](turret-demo.gif) 
 
 
